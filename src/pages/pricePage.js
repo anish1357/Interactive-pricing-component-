@@ -1,9 +1,18 @@
 import { useState, useEffect } from "react";
-import { Box, Typography, Hidden, useMediaQuery, Button } from "@mui/material";
+import {
+  Box,
+  Typography,
+  Hidden,
+  useMediaQuery,
+  Button,
+  Slider,
+} from "@mui/material";
 
 import ListItem from "../components/ListItem";
 import { useTheme } from "@mui/material/styles";
 import StyledSwitch from "../components/StyledSwitch";
+import StyledSlider from "../components/StyledSlider";
+import CustomThumb from "../components/StyledThumb";
 const prices = [
   { price: "8.00", pageviews: "10K", yearly: "6.00" },
   { price: "12.00", pageviews: "50K", yearly: "9.00" },
@@ -15,23 +24,23 @@ const prices = [
 const InteractivePricing = () => {
   const [isYearly, setIsYearly] = useState(false);
   const [planSelected, setPlanSelected] = useState(2);
-  const [selectedPrice, setSelectedPrice] = useState(null);
-  const [selectedPageViews, setSelectedPageViews] = useState(null);
+  const [price, setPrice] = useState(null);
+  const [pageViews, setPageViews] = useState(null);
   const theme = useTheme();
   const isSmall = useMediaQuery(theme.breakpoints.down("md"));
 
   useEffect(() => {
     let { price, pageviews, yearly } = prices[planSelected];
-    setSelectedPrice(price);
-    setSelectedPageViews(pageviews);
+    setPrice(price);
+    setPageViews(pageviews);
   }, [planSelected]);
 
   useEffect(() => {
     let { price, pageviews, yearly } = prices[planSelected];
     if (isYearly) {
-      setSelectedPrice(yearly);
+      setPrice(yearly);
     } else {
-      setSelectedPrice(price);
+      setPrice(price);
     }
   }, [isYearly, planSelected]);
 
@@ -40,7 +49,7 @@ const InteractivePricing = () => {
       <Box
         sx={{
           height: "100vh",
-          background: "url(/images/bg-pattern.svg), hsl(230, 100%, 99%)",
+          background: "url(../images/bg-pattern.svg), hsl(230, 100%, 99%)",
           backgroundSize: "100% 50%",
           backgroundRepeat: "no-repeat",
           display: "flex",
@@ -138,9 +147,29 @@ const InteractivePricing = () => {
                   },
                 }}
               >
-                {selectedPageViews} PAGEVIEWS
+                {pageViews} PAGEVIEWS
               </Typography>
-    
+
+              <Hidden mdUp>
+                <Box
+                  sx={{
+                    width: "100%",
+                    margin: theme.spacing(2, 0),
+                  }}
+                >
+                  <StyledSlider
+                    min={0}
+                    max={4}
+                    step={1}
+                    value={planSelected}
+                    onChange={(e) => {
+                      setPlanSelected(e.target.value);
+                    }}
+                    components={{ Thumb: CustomThumb }}
+                  />
+                </Box>
+              </Hidden>
+            
               <Box
                 sx={{
                   display: "flex",
@@ -161,7 +190,7 @@ const InteractivePricing = () => {
                     },
                   }}
                 >
-                  ${selectedPrice}
+                  ${price}
                 </Typography>
                 <Typography
                   variant="subtitle1"
@@ -177,7 +206,25 @@ const InteractivePricing = () => {
                 </Typography>
               </Box>
             </Box>
-
+            <Hidden mdDown>
+                <Box
+                  sx={{
+                  
+                    margin: theme.spacing(3, 0),
+                  }}
+                >
+                  <StyledSlider
+                    min={0}
+                    max={4}
+                    step={1}
+                    value={planSelected}
+                    onChange={(e) => {
+                      setPlanSelected(e.target.value);
+                    }}
+                    components={{ Thumb: CustomThumb }}
+                  />
+                </Box>
+              </Hidden>
             <Box
               sx={{
                 display: "flex",
@@ -203,7 +250,10 @@ const InteractivePricing = () => {
               >
                 Monthly Billing
               </Typography>
-              <StyledSwitch checked={isYearly} onChange={()=>setIsYearly(!isYearly)}/>
+              <StyledSwitch
+                checked={isYearly}
+                onChange={() => setIsYearly(!isYearly)}
+              />
               <Typography
                 variant="subtitle1"
                 component="p"
@@ -259,9 +309,9 @@ const InteractivePricing = () => {
             }}
           >
             <Box>
-                <ListItem text={"Unlimited websites"}/>
-                <ListItem text={"100% data ownership"}/>
-                <ListItem text={"email reports"}/>
+              <ListItem text={"Unlimited websites"} />
+              <ListItem text={"100% data ownership"} />
+              <ListItem text={"email reports"} />
             </Box>
             <Button
               sx={{
