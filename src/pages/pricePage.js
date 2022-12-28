@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import { Box, Typography, Hidden, useMediaQuery, Button } from "@mui/material";
 
-
+import ListItem from "../components/ListItem";
 import { useTheme } from "@mui/material/styles";
 
 const prices = [
@@ -259,7 +259,9 @@ const InteractivePricing = () => {
             }}
           >
             <Box>
-       
+                <ListItem text={"Unlimited websites"}/>
+                <ListItem text={"100% data ownership"}/>
+                <ListItem text={"email reports"}/>
             </Box>
             <Button
               sx={{
