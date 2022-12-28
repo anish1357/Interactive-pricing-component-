@@ -3,7 +3,7 @@ import { Box, Typography, Hidden, useMediaQuery, Button } from "@mui/material";
 
 import ListItem from "../components/ListItem";
 import { useTheme } from "@mui/material/styles";
-
+import StyledSwitch from "../components/StyledSwitch";
 const prices = [
   { price: "8.00", pageviews: "10K", yearly: "6.00" },
   { price: "12.00", pageviews: "50K", yearly: "9.00" },
@@ -203,7 +203,7 @@ const InteractivePricing = () => {
               >
                 Monthly Billing
               </Typography>
-     
+              <StyledSwitch checked={isYearly} onChange={()=>setIsYearly(!isYearly)}/>
               <Typography
                 variant="subtitle1"
                 component="p"
