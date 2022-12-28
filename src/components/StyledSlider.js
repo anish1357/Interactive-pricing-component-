@@ -2,6 +2,7 @@ import { Slider} from "@mui/material";
 import { styled } from "@mui/material/styles";
 
 const StyledSlider = styled(Slider)(({ theme }) => ({
+  color: "hsl(174, 77%, 80%)",
   height: 6,
   padding: "15px 0",
   "& .MuiSlider-thumb": {

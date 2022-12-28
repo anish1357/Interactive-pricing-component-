@@ -84,7 +84,7 @@ const InteractivePricing = () => {
               fontSize: "30px",
               color: "hsl(227, 35%, 25%)",
               fontFamily: "Manrope, sans-serif",
-              fontWeight: 800,
+              fontWeight: 600,
               [theme.breakpoints.down("md")]: {
                 fontSize: "24px",
               },
@@ -159,7 +159,7 @@ const InteractivePricing = () => {
                     margin: theme.spacing(2, 0),
                   }}
                 >
-                  <StyledSlider
+                  <StyledSlider disableRipple
                     min={0}
                     max={4}
                     step={1}
@@ -297,7 +297,10 @@ const InteractivePricing = () => {
               </Box>
             </Box>
           </Box>
-          <hr />
+          <hr style={{
+    border: "none",
+    borderTop: "1px solid hsl(0, 0%, 90%)",
+  }} />
           <Box
             sx={{
               padding: theme.spacing(3, 5),
@@ -315,20 +318,21 @@ const InteractivePricing = () => {
               <ListItem text={"100% data ownership"} />
               <ListItem text={"email reports"} />
             </Box>
-            <Button
+            <Button disableRipple
               sx={{
                 borderRadius: "25px",
                 border: "none",
                 backgroundColor: "hsl(227, 35%, 25%)",
+                textTransform:"none",
                 padding: theme.spacing(2, 6),
                 fontSize: "15px",
                 color: "hsl(226, 100%, 87%)",
                 fontFamily: "Manrope, sans-serif",
-                fontWeight: 800,
+                fontWeight: 600,
                 transition: "0.5s all ease",
                 "&:hover": {
                   cursor: "pointer",
-                  fontWeight: 800,
+                  fontWeight: 600,
                   color: "hsl(230, 100%, 99%)",
                   backgroundColor: "hsl(227, 35%, 25%)",
                 },
