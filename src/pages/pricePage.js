@@ -8,6 +8,8 @@ import {
   Slider,
 } from "@mui/material";
 
+import circles from "../images/pattern-circles.svg"
+import background from "../images/bg-pattern.svg"
 import ListItem from "../components/ListItem";
 import { useTheme } from "@mui/material/styles";
 import StyledSwitch from "../components/StyledSwitch";
@@ -49,7 +51,7 @@ const InteractivePricing = () => {
       <Box
         sx={{
           height: "100vh",
-          background: "url(../images/bg-pattern.svg), hsl(230, 100%, 99%)",
+          background: `url(${background})`,
           backgroundSize: "100% 50%",
           backgroundRepeat: "no-repeat",
           display: "flex",
@@ -64,7 +66,7 @@ const InteractivePricing = () => {
       >
         <Box
           sx={{
-            background: "url(/images/pattern-circles.svg)",
+            background: `url(${circles})`,
             backgroundRepeat: "no-repeat",
             backgroundPosition: "50% 50%",
             textAlign: "center",
@@ -328,6 +330,7 @@ const InteractivePricing = () => {
                   cursor: "pointer",
                   fontWeight: 800,
                   color: "hsl(230, 100%, 99%)",
+                  backgroundColor: "hsl(227, 35%, 25%)",
                 },
                 [theme.breakpoints.down("md")]: {
                   margin: theme.spacing(3, 0),
