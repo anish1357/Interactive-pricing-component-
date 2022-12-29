@@ -1,9 +1,9 @@
 import { ThemeProvider } from "@emotion/react";
-import { createTheme, CssBaseline, Switch ,IconButton} from "@mui/material";
+import { createTheme, CssBaseline,IconButton} from "@mui/material";
 import { useState } from "react";
 import "./App.css";
 import InteractivePricing from "./pages/pricePage";
-import Pricepage from "./pages/pricePage";
+
 import Brightness7Icon from "@mui/icons-material/Brightness7";
 import Brightness4Icon from "@mui/icons-material/Brightness4";
 function App() {
