@@ -1,24 +1,24 @@
 import { Switch } from "@mui/material";
 import { styled } from "@mui/material/styles";
 
-const StyledSwitch = styled(Switch)(({ theme }) => ({
+const StyledSwitch = styled(Switch)(({ theme,mode }) => ({
   padding: 4,
   margin: theme.spacing(0, 1),
   "& .MuiSwitch-switchBase": {
     "&.Mui-checked": {
       "& + .MuiSwitch-track": {
-        backgroundColor: "hsl(174, 86%, 45%)",
+        backgroundColor: mode==="light"?"hsl(174, 86%, 45%)":"hsl(208, 61%, 44%)",
       },
     },
     "&:hover": {
       "& + .MuiSwitch-track": {
-        backgroundColor: "hsl(174, 86%, 45%)",
+        backgroundColor:  mode==="light"?"hsl(174, 86%, 45%)":"hsl(208, 61%, 44%)",
       },
     },
   },
   "& .MuiSwitch-track": {
     borderRadius: 44 / 2,
-    backgroundColor: "hsl(223, 50%, 87%)",
+    backgroundColor: mode==="light"?"hsl(223, 50%, 87%)":"hsl(215, 65%, 36%)",
   },
   "& .MuiSwitch-thumb": {
     boxShadow: "none",

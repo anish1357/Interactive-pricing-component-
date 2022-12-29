@@ -5,7 +5,6 @@ import {
   Hidden,
   useMediaQuery,
   Button,
-  Slider,
 } from "@mui/material";
 
 import circles from "../images/pattern-circles.svg"
@@ -34,13 +33,13 @@ const InteractivePricing = ({mode}) => {
   const isSmall = useMediaQuery(theme.breakpoints.down("md"));
 
   useEffect(() => {
-    let { price, pageviews, yearly } = prices[planSelected];
+    let { price, pageviews,} = prices[planSelected];
     setPrice(price);
     setPageViews(pageviews);
   }, [planSelected]);
 
   useEffect(() => {
-    let { price, pageviews, yearly } = prices[planSelected];
+    let { price,  yearly } = prices[planSelected];
     if (isYearly) {
       setPrice(yearly);
     } else {
@@ -165,6 +164,7 @@ const InteractivePricing = ({mode}) => {
                     min={0}
                     max={4}
                     step={1}
+                    mode={mode}
                     value={planSelected}
                     onChange={(e) => {
                       setPlanSelected(e.target.value);
@@ -185,7 +185,7 @@ const InteractivePricing = ({mode}) => {
                   component="h2"
                   sx={{
                     fontSize: "36px",
-                    color: "hsl(227, 35%, 25%)",
+                    color: mode==="light"?  "hsl(227, 35%, 25%)":"rgba(51, 47, 208,0.76)",
                     fontFamily: "Manrope, sans-serif",
                     marginRight: theme.spacing(1),
                     fontWeight: 800,
@@ -222,6 +222,7 @@ const InteractivePricing = ({mode}) => {
                     max={4}
                     step={1}
                     value={planSelected}
+                    mode={mode}
                     onChange={(e) => {
                       setPlanSelected(e.target.value);
                     }}
@@ -256,6 +257,7 @@ const InteractivePricing = ({mode}) => {
               </Typography>
               <StyledSwitch
                 checked={isYearly}
+                mode={mode}
                 onChange={() => setIsYearly(!isYearly)}
               />
               <Typography

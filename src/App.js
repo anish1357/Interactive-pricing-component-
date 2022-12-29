@@ -18,7 +18,7 @@ function App() {
   return (
     <ThemeProvider theme={theme}>
       <IconButton
-        sx={{ ml: 1 }}
+        sx={{ ml: 1 , position: "absolute" ,zIndex:"1"}}
         onClick={() => {
           if (mode === "light") setMode("dark");
           else setMode("light");
