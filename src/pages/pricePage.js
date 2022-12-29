@@ -9,7 +9,9 @@ import {
 } from "@mui/material";
 
 import circles from "../images/pattern-circles.svg"
+import circlesdk from "../images/pattern-circles-dk.svg"
 import background from "../images/bg-pattern.svg"
+import backgrounddk from "../images/bg-pattern-dk.svg"
 import ListItem from "../components/ListItem";
 import { useTheme } from "@mui/material/styles";
 import StyledSwitch from "../components/StyledSwitch";
@@ -23,7 +25,7 @@ const prices = [
   { price: "36.00", pageviews: "1M", yearly: "27.00" },
 ];
 
-const InteractivePricing = () => {
+const InteractivePricing = ({mode}) => {
   const [isYearly, setIsYearly] = useState(false);
   const [planSelected, setPlanSelected] = useState(2);
   const [price, setPrice] = useState(null);
@@ -51,7 +53,7 @@ const InteractivePricing = () => {
       <Box
         sx={{
           height: "100vh",
-          background: `url(${background})`,
+          background: `url(${mode ==="light" ? background : backgrounddk})`,
           backgroundSize: "100% 50%",
           backgroundRepeat: "no-repeat",
           display: "flex",
@@ -66,7 +68,7 @@ const InteractivePricing = () => {
       >
         <Box
           sx={{
-            background: `url(${circles})`,
+            background: `url(${mode ==="light" ? circles : circlesdk})`,
             backgroundRepeat: "no-repeat",
             backgroundPosition: "50% 50%",
             textAlign: "center",
@@ -82,7 +84,7 @@ const InteractivePricing = () => {
             sx={{
               marginBottom: theme.spacing(1),
               fontSize: "30px",
-              color: "hsl(227, 35%, 25%)",
+              color: mode ==="light" ? "hsl(227, 35%, 25%)":"rgba(255, 255, 255, 0.7)",
               fontFamily: "Manrope, sans-serif",
               fontWeight: 600,
               [theme.breakpoints.down("md")]: {
@@ -107,7 +109,7 @@ const InteractivePricing = () => {
         </Box>
         <Box
           sx={{
-            backgroundColor: "hsl(0, 0%, 100%)",
+            backgroundColor: mode === "light"?"hsl(0, 0%, 100%)" : "6B728E",
             boxShadow: "8px 8px 30px hsl(223, 50%, 87%)",
             width: "550px",
             borderRadius: theme.spacing(1),
